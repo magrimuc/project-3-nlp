@@ -36,7 +36,7 @@ def main():
     
     # Cross-validation score
     print("Evaluating model with 5-fold cross-validation...")
-    scores = cross_val_score(pipeline, X, y)#, cv=5, scoring="accuracy")
+    scores = cross_val_score(pipeline, X, y, cv=5, scoring="accuracy")
     print(f"Cross-validation accuracies: {scores}")
     print(f"Mean CV Accuracy: {scores.mean():.4f} (+/- {scores.std() * 2:.4f})")
     
