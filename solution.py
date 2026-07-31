@@ -32,6 +32,7 @@ def main():
     print("Building model pipeline...")
     pipeline = make_pipeline(
         TfidfVectorizer(ngram_range=(1, 2), max_features=50000, stop_words='english'),
+        #maybe should have tried: linearSVM
         LogisticRegression(C=2.0, max_iter=1000, random_state=42)
     )
     
