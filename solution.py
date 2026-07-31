@@ -21,6 +21,7 @@ def main():
     
     # Clean text slightly (handle missing values if any)
     train_df["text"] = train_df["text"].fillna("")
+    train_df = train_df.drop_duplicates()
     
     # Define features and labels
     X = train_df["text"]
@@ -30,8 +31,8 @@ def main():
     # We use TF-IDF vectorizer (unigrams + bigrams) and Logistic Regression
     print("Building model pipeline...")
     pipeline = make_pipeline(
-        TfidfVectorizer(),#ngram_range=(1, 2), max_features=50000, stop_words='english'),
-        LogisticRegression()#C=2.0, max_iter=1000, random_state=42)
+        TfidfVectorizer(ngram_range=(1, 2), max_features=50000, stop_words='english'),
+        LogisticRegression(C=2.0, max_iter=1000, random_state=42)
     )
     
     # Cross-validation score
